@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="clr-namespace:Table.ViewModels"
+			 xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Table.Views.MainView"
+             x:DataType="vm:MainViewModel">
+	
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+	<Grid>
+		<TextBlock 
+			FontSize="30"
+			Text="Materials"
+			VerticalAlignment="Top" 
+			HorizontalAlignment="Center"></TextBlock>
+		<ScrollViewer Margin="50">
+			<ItemsControl ItemsSource="{Binding Materials}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Border BorderBrush="White" BorderThickness="1" Margin="5">
+							<Grid Margin="15">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="200" />
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="200" />
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="100" />
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="100" />
+								</Grid.ColumnDefinitions>
+								<TextBlock Text="Name:" Grid.Column="0" FontWeight="Bold"  />
+								<TextBlock Text="{Binding Name}" Grid.Column="1"  />
+								<TextBlock Text="Material:" Grid.Column="2" FontWeight="Bold" />
+								<TextBlock Text="{Binding Material}" Grid.Column="3"  />
+								<TextBlock Text="Weight:" Grid.Column="4" FontWeight="Bold" />
+								<TextBlock Text="{Binding Weight}" Grid.Column="5"  />
+								<TextBlock Text="Count:" Grid.Column="6" FontWeight="Bold" />
+								<TextBlock Text="{Binding Count}" Grid.Column="7" />
+
+							</Grid>
+						</Border>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+	</Grid>
+
+</UserControl>
